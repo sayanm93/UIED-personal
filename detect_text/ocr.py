@@ -23,20 +23,26 @@ def Google_OCR_makeImageData(imgpath):
 
 
 def ocr_detection_google(imgpath):
-    start = time.clock()
+    print('reached ocr detection')
+    start = time.perf_counter()
     url = 'https://vision.googleapis.com/v1/images:annotate'
-    api_key = 'AIzaSyDUc4iOUASJQYkVwSomIArTKhE2C6bHK8U'             # *** Replace with your own Key ***
+    api_key = 'AIzaSyCzn4dupxA4RK8TrPkZtRQyZt6tyrl0nMM'             # *** Replace with your own Key ***
     imgdata = Google_OCR_makeImageData(imgpath)
     response = requests.post(url,
                              data=imgdata,
                              params={'key': api_key},
                              headers={'Content_Type': 'application/json'})
     # print('*** Text Detection Time Taken:%.3fs ***' % (time.clock() - start))
-    print("*** Please replace the Google OCR key at detect_text/ocr.py line 28 with your own (apply in https://cloud.google.com/vision) ***")
+    print("** Please replace the Google OCR key at detect_text/ocr.py line 28 with your own (apply in https://cloud.google.com/vision) **")
     if 'responses' not in response.json():
         raise Exception(response.json())
     if response.json()['responses'] == [{}]:
         # No Text
+        print("ocr done")
         return None
     else:
+        print("ocr done")
         return response.json()['responses'][0]['textAnnotations'][1:]
+        
+    
+    

@@ -20,6 +20,8 @@ def save_detection_json(file_path, texts, img_shape):
         output['texts'].append(c)
     json.dump(output, f_out, indent=4)
 
+    print("save_detection_json done")
+
 
 def visualize_texts(org_img, texts, shown_resize_height=None, show=False, write_path=None):
     img = org_img.copy()
@@ -36,6 +38,8 @@ def visualize_texts(org_img, texts, shown_resize_height=None, show=False, write_
         cv2.destroyWindow('texts')
     if write_path is not None:
         cv2.imwrite(write_path, img)
+    
+    print("vis_texts done")
 
 
 def text_sentences_recognition(texts):
@@ -132,7 +136,7 @@ def text_detection(input_file='../data/input/30800.jpg', output_file='../data/ou
     :param method: google or paddle
     :param paddle_model: the preload paddle model for paddle ocr
     '''
-    start = time.clock()
+    start = time.perf_counter()
     name = input_file.split('/')[-1][:-4]
     ocr_root = pjoin(output_file, 'ocr')
     img = cv2.imread(input_file)
@@ -144,6 +148,7 @@ def text_detection(input_file='../data/input/30800.jpg', output_file='../data/ou
         texts = merge_intersected_texts(texts)
         texts = text_filter_noise(texts)
         texts = text_sentences_recognition(texts)
+        print('reached text_detect end')
     elif method == 'paddle':
         # The import of the paddle ocr can be separate to the beginning of the program if you decide to use this method
         from paddleocr import PaddleOCR
@@ -154,10 +159,12 @@ def text_detection(input_file='../data/input/30800.jpg', output_file='../data/ou
         texts = text_cvt_orc_format_paddle(result)
     else:
         raise ValueError('Method has to be "google" or "paddle"')
-
-    visualize_texts(img, texts, shown_resize_height=800, show=show, write_path=pjoin(ocr_root, name+'.png'))
+    
+    print('text_detect continue')
+    visualize_texts(img, texts, 800, True, write_path=pjoin(ocr_root, name+'.png'))
+    print('text_detect continue 1')
     save_detection_json(pjoin(ocr_root, name+'.json'), texts, img.shape)
-    print("[Text Detection Completed in %.3f s] Input: %s Output: %s" % (time.clock() - start, input_file, pjoin(ocr_root, name+'.json')))
+    print("[Text Detection Completed in %.3f s] Input: %s Output: %s" % (time.perf_counter() - start, input_file, pjoin(ocr_root, name+'.json')))
 
 
 # text_detection()

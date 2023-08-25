@@ -51,37 +51,44 @@ if __name__ == '__main__':
                   'merge-contained-ele':True, 'merge-line-to-paragraph':False, 'remove-bar':True}
 
     # set input image path
-    input_path_img = 'data/input/497.jpg'
+    input_path_img = 'data/input/webpage.png'
     output_root = 'data/output'
 
     resized_height = resize_height_by_longest_edge(input_path_img, resize_length=800)
     color_tips()
 
     is_ip = True
-    is_clf = False
+    is_clf = True
     is_ocr = True
     is_merge = True
 
     if is_ocr:
+        print("Executing OCR")
         import detect_text.text_detection as text
         os.makedirs(pjoin(output_root, 'ocr'), exist_ok=True)
-        text.text_detection(input_path_img, output_root, show=True, method='google')
+        text.text_detection('data/input/webpage.png', 'data/output', show=True, method='google')
 
     if is_ip:
+        print("Executing IP")
         import detect_compo.ip_region_proposal as ip
         os.makedirs(pjoin(output_root, 'ip'), exist_ok=True)
         # switch of the classification func
         classifier = None
+        print("IP done till clf")
         if is_clf:
             classifier = {}
             from cnn.CNN import CNN
             # classifier['Image'] = CNN('Image')
             classifier['Elements'] = CNN('Elements')
             # classifier['Noise'] = CNN('Noise')
+            print("clf half done")
         ip.compo_detection(input_path_img, output_root, key_params,
-                           classifier=classifier, resize_by_height=resized_height, show=False)
+                           classifier=classifier, resize_by_height=resized_height, show=True)
+        
+        print("IP done completely")
 
     if is_merge:
+        print("Executing MERGE")
         import detect_merge.merge as merge
         os.makedirs(pjoin(output_root, 'merge'), exist_ok=True)
         name = input_path_img.split('/')[-1][:-4]

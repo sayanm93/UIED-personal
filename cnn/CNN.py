@@ -63,6 +63,7 @@ class CNN:
             self.model_path = cfg.CNN_PATH
             self.class_map = cfg.element_class
             self.image_shape = (64, 64, 3)
+            print("Load done")
         elif classifier_type == 'Image':
             self.model_path = 'E:/Mulong/Model/rico_compos/cnn-image-1.h5'
             self.class_map = ['Image', 'Non-Image']

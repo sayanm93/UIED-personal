@@ -1,0 +1,119 @@
+{
+    "img_shape": [
+        676,
+        1274,
+        3
+    ],
+    "texts": [
+        {
+            "id": 0,
+            "content": "Gmail",
+            "column_min": 38,
+            "row_min": 46,
+            "column_max": 68,
+            "row_max": 55,
+            "width": 30,
+            "height": 9
+        },
+        {
+            "id": 1,
+            "content": "Search Google or type a URL",
+            "column_min": 141,
+            "row_min": 11,
+            "column_max": 319,
+            "row_max": 23,
+            "width": 178,
+            "height": 12
+        },
+        {
+            "id": 2,
+            "content": "YouTube",
+            "column_min": 108,
+            "row_min": 44,
+            "column_max": 154,
+            "row_max": 56,
+            "width": 46,
+            "height": 12
+        },
+        {
+            "id": 3,
+            "content": "Maps",
+            "column_min": 195,
+            "row_min": 46,
+            "column_max": 224,
+            "row_max": 56,
+            "width": 29,
+            "height": 10
+        },
+        {
+            "id": 4,
+            "content": "Photo by Giulio Rosso Chioso",
+            "column_min": 48,
+            "row_min": 642,
+            "column_max": 229,
+            "row_max": 653,
+            "width": 181,
+            "height": 11
+        },
+        {
+            "id": 5,
+            "content": "Google",
+            "column_min": 547,
+            "row_min": 238,
+            "column_max": 817,
+            "row_max": 313,
+            "width": 270,
+            "height": 75
+        },
+        {
+            "id": 6,
+            "content": "Search Google or type a URL",
+            "column_min": 454,
+            "row_min": 379,
+            "column_max": 658,
+            "row_max": 395,
+            "width": 204,
+            "height": 16
+        },
+        {
+            "id": 7,
+            "content": "Web Store",
+            "column_min": 597,
+            "row_min": 507,
+            "column_max": 656,
+            "row_max": 519,
+            "width": 59,
+            "height": 12
+        },
+        {
+            "id": 8,
+            "content": "+",
+            "column_min": 731,
+            "row_min": 458,
+            "column_max": 746,
+            "row_max": 471,
+            "width": 15,
+            "height": 13
+        },
+        {
+            "id": 9,
+            "content": "Add shortcut",
+            "column_min": 701,
+            "row_min": 509,
+            "column_max": 776,
+            "row_max": 518,
+            "width": 75,
+            "height": 9
+        },
+        {
+            "id": 10,
+            "content": "Gmail Images",
+            "column_min": 1157,
+            "row_min": 95,
+            "column_max": 1249,
+            "row_max": 107,
+            "width": 92,
+            "height": 12
+        }
+    ]
+}
